@@ -38,7 +38,7 @@ if (isset($_POST['add_sale'])) {
 
 // Fetch sales for display with product names
 $sales_query = "
-    SELECT sales.id, sales.product_id, sales.price, sales.qty, sales.date, products.name AS product_name
+    SELECT sales.id, sales.product_id, sales.price, sales.qty, sales.date, name AS product_name
     FROM sales
     JOIN products ON sales.product_id = products.id
 ";
