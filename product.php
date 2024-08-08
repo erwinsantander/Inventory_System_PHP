@@ -90,7 +90,7 @@
           </div>
           <div class="form-group">
             <label for="quantity">Quantity</label>
-            <input type="text" class="form-control" id="quantity" name="quantity">
+            <input type="number" class="form-control" id="quantity" name="quantity" min="0" step="1" value="0">
           </div>
         </div>
         <div class="modal-footer">
@@ -110,9 +110,13 @@
     $('#editModal').modal('show');
   }
 
+  // Ensure that quantity input field does not accept negative values
   var input = document.getElementById('quantity');
   input.addEventListener('input', function() {
-      this.value = this.value.replace(/[^0-9]/g, ''); // Allow only non-negative integers
+      // This will ensure only non-negative integers are allowed
+      if (parseInt(this.value) < 0) {
+          this.value = '0';
+      }
   });
 </script>
 
