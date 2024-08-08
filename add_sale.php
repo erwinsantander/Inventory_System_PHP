@@ -17,12 +17,11 @@ if (isset($_POST['add_sale'])) {
     if (empty($errors)) {
         $p_id = $db->escape((int)$_POST['s_id']);
         $s_qty = $db->escape((int)$_POST['quantity']);
-        $s_price = $db->escape($_POST['price']);
         $s_total = $db->escape($_POST['total']);
         $date = $db->escape($_POST['date']);
         $s_date = make_date();
 
-        $sql = "INSERT INTO sales (product_id, qty, price, total, date) VALUES ('{$p_id}', '{$s_qty}', '{$s_price}', '{$s_total}', '{$s_date}')";
+        $sql = "INSERT INTO sales (product_id, qty, price, date) VALUES ('{$p_id}', '{$s_qty}', '{$s_total}', '{$s_date}')";
 
         if ($db->query($sql)) {
             update_product_qty($s_qty, $p_id);
@@ -40,7 +39,7 @@ if (isset($_POST['add_sale'])) {
 
 // Fetch sales for display with product names
 $sales_query = "
-    SELECT sales.id, sales.product_id, sales.price, sales.qty, sales.total, sales.date, name AS product_name
+    SELECT sales.id, sales.product_id, sales.price, sales.qty, sales.date, name AS product_name
     FROM sales
     JOIN products ON sales.product_id = products.id
 ";
@@ -74,11 +73,11 @@ include_once('layouts/header.php');
         </div>
         <div class="form-group">
             <label for="price">Price:</label>
-            <input type="text" class="form-control" name="price" id="price" readonly required>
+            <input type="text" class="form-control" name="price" id="price" required>
         </div>
         <div class="form-group">
             <label for="total">Total:</label>
-            <input type="text" class="form-control" name="total" id="total" readonly required>
+            <input type="text" class="form-control" name="total" id="total" required>
         </div>
         <div class="form-group">
             <label for="date">Date:</label>
@@ -88,6 +87,8 @@ include_once('layouts/header.php');
     </form>
   </div>
 </div>
+
+
 
 <?php if (isset($msg)): ?>
 <script>
@@ -99,49 +100,5 @@ include_once('layouts/header.php');
     });
 </script>
 <?php endif; ?>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('#s_id').change(function() {
-            var productId = $(this).val();
-            if (productId) {
-                $.ajax({
-                    url: 'get_product_price.php',
-                    type: 'POST',
-                    data: { id: productId },
-                    dataType: 'json',
-                    success: function(data) {
-                        if (data.success) {
-                            $('#price').val(data.price);
-                            calculateTotal();
-                        } else {
-                            $('#price').val('');
-                            $('#total').val('');
-                        }
-                    }
-                });
-            } else {
-                $('#price').val('');
-                $('#total').val('');
-            }
-        });
-
-        $('#quantity').keyup(function() {
-            calculateTotal();
-        });
-
-        $('#price').keyup(function() {
-            calculateTotal();
-        });
-
-        function calculateTotal() {
-            var price = parseFloat($('#price').val()) || 0;
-            var quantity = parseInt($('#quantity').val()) || 0;
-            var total = price * quantity;
-            $('#total').val(total.toFixed(2));
-        }
-    });
-</script>
 
 <?php include_once('layouts/footer.php'); ?>
