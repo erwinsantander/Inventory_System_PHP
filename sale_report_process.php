@@ -91,7 +91,7 @@ if (isset($_POST['submit'])) {
             $total_sales = 0;
             $total_buy_price = 0;
             foreach ($results as $result):
-                $qty = (int)$result['total_sales'];
+                $qty = (int)$result['total_sales']; // Assuming this is the deducted quantity
                 $buy_price = (float)$result['buy_price'];
                 $sale_price = (float)$result['sale_price'];
                 $total_saleing_price = (float)$result['total_saleing_price'];
@@ -112,7 +112,7 @@ if (isset($_POST['submit'])) {
             <tfoot>
             <tr>
                 <td colspan="4"></td>
-                <td>Total Qty</td>
+                <td>Total Qty Deducted</td>
                 <td class="text-right"><?php echo number_format($total_qty); ?></td>
             </tr>
             <tr>
