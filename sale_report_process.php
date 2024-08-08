@@ -27,7 +27,7 @@ if(isset($_POST['submit'])){
 function total_qty($results) {
     $total_qty = 0;
     foreach ($results as $result) {
-        $total_qty += (int)$result['total_sales'];
+        $total_qty += (int)$result['total_sales']; // Assume this field reflects the deducted quantity
     }
     return $total_qty;
 }
@@ -130,7 +130,7 @@ function total_profit($results) {
                 <tfoot>
                     <tr>
                         <td colspan="4"></td>
-                        <td>Grand Total Qty</td>
+                        <td>Total Qty</td>
                         <td class="text-right"><?php echo number_format(total_qty($results), 0); ?></td>
                     </tr>
                     <tr>
