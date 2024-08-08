@@ -6,7 +6,7 @@
 <?php include_once('layouts/header.php'); ?>
 <body>
     
-<div class="login-page" style="border-radius:10%; margin-top: 105px">
+<div class="login-page" style="border-radius:10%; margin-top: 110px">
     <div class="text-center">
        <h1>Login Panel</h1>
        <h4>Inventory Management System</h4>
