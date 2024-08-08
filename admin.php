@@ -24,7 +24,7 @@
               <i class="glyphicon glyphicon-user"></i>
             </div>
             <div class="panel-value pull-right">
-              <h2 class="margin-top">&nbsp; <?php echo $c_user['total']; ?> </h2>
+              <h2 class="margin-top">&nbsp; <?php echo (int)$c_user['total']; ?> </h2>
               <p class="text-muted"> &nbsp;Users</p>
             </div>
            </div>
@@ -37,7 +37,7 @@
               <i class="glyphicon glyphicon-th-large"></i>
             </div>
             <div class="panel-value pull-right">
-              <h2 class="margin-top">&nbsp; <?php echo $c_categorie['total']; ?> </h2>
+              <h2 class="margin-top">&nbsp; <?php echo (int)$c_categorie['total']; ?> </h2>
               <p class="text-muted"> &nbsp;Categories</p>
             </div>
            </div>
@@ -50,7 +50,7 @@
               <i class="glyphicon glyphicon-shopping-cart"></i>
             </div>
             <div class="panel-value pull-right">
-              <h2 class="margin-top">&nbsp; <?php echo $c_product['total']; ?> </h2>
+              <h2 class="margin-top">&nbsp; <?php echo (int)$c_product['total']; ?> </h2>
               <p class="text-muted"> &nbsp;Products</p>
             </div>
            </div>
@@ -63,7 +63,7 @@
               <i class="fas fa-money-bill-alt"></i>
             </div>
             <div class="panel-value pull-right">
-              <h2 class="margin-top">&nbsp; <?php echo $c_sale['total']; ?></h2>
+              <h2 class="margin-top">&nbsp; <?php echo (int)$c_sale['total']; ?></h2>
               <p class="text-muted"> &nbsp;Sales</p>
             </div>
            </div>
@@ -211,7 +211,7 @@
            <tbody>
              <?php foreach ($recent_sales as $recent_sale): ?>
              <tr>
-               <td class="text-center"><?php echo count_id();?></td>
+               <td class="text-center"><?php echo count_id(); ?></td>
                <td>
                 <a href="edit_sale.php?id=<?php echo (int)$recent_sale['id']; ?>">
                  <?php echo remove_junk(first_character($recent_sale['name'])); ?>
