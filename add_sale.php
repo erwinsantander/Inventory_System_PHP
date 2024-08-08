@@ -88,47 +88,7 @@ include_once('layouts/header.php');
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-12">
-    <div class="panel panel-default">
-      <div class="panel-heading clearfix">
-        <strong>
-          <span class="glyphicon glyphicon-th"></span>
-          <span>Sale List</span>
-        </strong>
-      </div>
-      <div class="panel-body">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>Item</th>
-              <th>Price</th>
-              <th>Qty</th>
-              <th>Total</th>
-              <th>Date</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody id="product_info">
-            <?php while ($sale = $sales_result->fetch_assoc()): ?>
-              <tr>
-                <td><?php echo htmlspecialchars($sale['product_name']); ?></td>
-                <td><?php echo htmlspecialchars($sale['price']); ?></td>
-                <td><?php echo htmlspecialchars($sale['qty']); ?></td>
-                <td><?php echo htmlspecialchars($sale['price'] * $sale['qty']); ?></td>
-                <td><?php echo htmlspecialchars($sale['date']); ?></td>
-                <td>
-                    <a href="edit_sale.php?id=<?php echo htmlspecialchars($sale['id']); ?>" class="btn btn-warning">Edit</a>
-                    <a href="delete_sale.php?id=<?php echo htmlspecialchars($sale['id']); ?>" class="btn btn-warning" style="background-color:grey">Delete</a>
-                </td>
-              </tr>
-            <?php endwhile; ?>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 <?php if (isset($msg)): ?>
 <script>
