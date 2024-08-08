@@ -11,7 +11,7 @@
     margin-top: 130px; 
     border-block-color: unset; 
     background-color: #fff; /* Adjust this to your preferred background color */
-    box-shadow: 0 0 15px rgba(0, 255, 0, 0.8); /* Glowing effect: adjust color and spread as needed */
+    box-shadow: 0 0 15px rgb(255 6 5); /* Glowing effect: adjust color and spread as needed */
     padding: 20px; /* Add padding to ensure content doesn't touch the edges */
 ">
     <div class="text-center">
