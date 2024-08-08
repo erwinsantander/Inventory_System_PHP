@@ -81,7 +81,7 @@ if (isset($_POST['submit'])) {
                     <th>Product Title</th>
                     <th>Buying Price</th>
                     <th>Selling Price</th>
-                    <th>Total Qty</th>
+                    <th>Total Qty Sold</th>
                     <th>Total Sales</th>
                 </tr>
             </thead>
@@ -91,28 +91,28 @@ if (isset($_POST['submit'])) {
             $total_sales = 0;
             $total_buy_price = 0;
             foreach ($results as $result):
-                $qty = (int)$result['total_qty']; // Adjusted to reflect correct quantity field
+                $qty_sold = (int)$result['qty_sold']; // Deducted quantity
                 $buy_price = (float)$result['buy_price'];
-                $sale_price = (float)$result['sale_price'];
-                $total_saleing_price = (float)$result['total_saleing_price'];
-                $total_qty += $qty;
-                $total_sales += $total_saleing_price;
-                $total_buy_price += $qty * $buy_price;
+                $sell_price = (float)$result['sell_price'];
+                $total_sales_amount = $qty_sold * $sell_price; // Total sales based on quantity sold
+                $total_qty += $qty_sold;
+                $total_sales += $total_sales_amount;
+                $total_buy_price += $qty_sold * $buy_price;
                 ?>
                 <tr>
                     <td><?php echo remove_junk($result['date']); ?></td>
                     <td><?php echo remove_junk(ucfirst($result['name'])); ?></td>
                     <td class="text-right"><?php echo number_format($buy_price, 2); ?></td>
-                    <td class="text-right"><?php echo number_format($sale_price, 2); ?></td>
-                    <td class="text-right"><?php echo number_format($qty); ?></td>
-                    <td class="text-right"><?php echo number_format($total_saleing_price, 2); ?></td>
+                    <td class="text-right"><?php echo number_format($sell_price, 2); ?></td>
+                    <td class="text-right"><?php echo number_format($qty_sold); ?></td>
+                    <td class="text-right"><?php echo number_format($total_sales_amount, 2); ?></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>
             <tfoot>
             <tr>
                 <td colspan="4"></td>
-                <td>Grand Total Qty</td>
+                <td>Grand Total Qty Sold</td>
                 <td class="text-right"><?php echo number_format($total_qty); ?></td>
             </tr>
             <tr>
