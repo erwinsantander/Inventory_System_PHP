@@ -1,21 +1,24 @@
 <?php
-  $page_title = 'Admin Home Page';
-  require_once('includes/load.php');
-  page_require_level(1);
+$page_title = 'Admin Home Page';
+require_once('includes/load.php');
+page_require_level(1);
 
-  $c_categorie     = count_by_id('categories');
-  $c_product       = count_by_id('products');
-  $c_sale          = count_by_id('sales');
-  $c_user          = count_by_id('users');
-  $products_sold   = find_higest_saleing_product('10');
-  $recent_products = find_recent_product_added('5');
-  $recent_sales    = find_recent_sale_added('5');
+// Fetch data
+$c_categorie     = count_by_id('categories');
+$c_product       = count_by_id('products');
+$c_sale          = count_by_id('sales');
+$c_user          = count_by_id('users');
+$products_sold   = find_higest_saleing_product('10');
+$recent_products = find_recent_product_added('5');
+$recent_sales    = find_recent_sales_with_quantity('5'); // Updated function
 ?>
 <?php include_once('layouts/header.php'); ?>
+
 <div class="row">
    <div class="col-md-6">
    </div>
 </div>
+
 <div class="row">
     <a href="users.php" style="color:black;">
         <div class="col-md-3">
@@ -174,7 +177,7 @@
              <th>Title</th>
              <th>Total Sold</th>
              <th>Total Quantity</th>
-           <tr>
+           </tr>
           </thead>
           <tbody>
             <?php foreach ($products_sold as $product_sold): ?>
