@@ -20,7 +20,8 @@ $sales = find_all_sale();
             <span>All Sales</span>
           </strong>
           <div class="pull-right">
-            <a href="add_sale.php" class="btn btn-primary">View Sales</a>
+            <a href="view_sales.php" class="btn btn-primary">View Sales</a>
+            <a href="add_sale.php" class="btn btn-success">Add Sale</a>
           </div>
         </div>
         <div class="panel-body">
