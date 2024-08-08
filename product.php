@@ -2,12 +2,11 @@
   $page_title = 'All Product';
   require_once('includes/load.php');
   // Checkin What level user has permission to view this page
-   page_require_level(2);
+  page_require_level(2);
   $products = join_product_table();
 ?>
 <?php include_once('layouts/header.php'); ?>
   <div class="row">
-     
     <div class="col-md-12">
       <div class="panel panel-default">
         <div class="panel-heading clearfix">
@@ -39,8 +38,8 @@
                   <?php if($product['media_id'] === '0'): ?>
                     <img class="img-avatar img-circle" src="uploads/products/no_image.png" alt="">
                   <?php else: ?>
-                  <img class="img-avatar img-circle" src="uploads/products/<?php echo $product['image']; ?>" alt="">
-                <?php endif; ?>
+                    <img class="img-avatar img-circle" src="uploads/products/<?php echo $product['image']; ?>" alt="">
+                  <?php endif; ?>
                 </td>
                 <td> <?php echo remove_junk($product['name']); ?></td>
                 <td class="text-center"> <?php echo remove_junk($product['categorie']); ?></td>
@@ -56,10 +55,10 @@
                 <td class="text-center"> <?php echo read_date($product['date']); ?></td>
                 <td class="text-center">
                   <div class="btn-group">
-                    <a href="edit_product.php?id=<?php echo (int)$product['id'];?>" class="btn btn-info btn-xs"  title="Edit" data-toggle="tooltip">
+                    <a href="edit_product.php?id=<?php echo (int)$product['id'];?>" class="btn btn-info btn-xs" title="Edit" data-toggle="tooltip">
                       <span class="glyphicon glyphicon-edit"></span>
                     </a>
-                    <a href="delete_product.php?id=<?php echo (int)$product['id'];?>" class="btn btn-danger btn-xs"  title="Delete" data-toggle="tooltip">
+                    <a href="delete_product.php?id=<?php echo (int)$product['id'];?>" class="btn btn-danger btn-xs" title="Delete" data-toggle="tooltip">
                       <span class="glyphicon glyphicon-trash"></span>
                     </a>
                   </div>
@@ -67,7 +66,7 @@
               </tr>
              <?php endforeach; ?>
             </tbody>
-          </tabel>
+          </table>
         </div>
       </div>
     </div>
@@ -107,16 +106,17 @@
   function openModal(id, name, quantity) {
     $('#product_id').val(id);
     $('#product_name').val(name);
-    // $('#quantity').val(quantity);
+    $('#quantity').val(quantity);
     $('#editModal').modal('show');
   }
 
   var input = document.getElementById('quantity');
-    input.addEventListener('input', function() {
-        this.value = this.value.replace(/[^0-9]/g, '');
-    });
+  input.addEventListener('input', function() {
+      this.value = this.value.replace(/[^0-9]/g, ''); // Allow only non-negative integers
+  });
 </script>
-  <?php if ($msg): ?>
+
+<?php if ($msg): ?>
 <script>
     Swal.fire({
         icon: '<?php echo $msg['type']; ?>',
@@ -126,4 +126,5 @@
     });
 </script>
 <?php endif; ?>
-  <?php include_once('layouts/footer.php'); ?>
+
+<?php include_once('layouts/footer.php'); ?>
