@@ -6,7 +6,7 @@
 <?php include_once('layouts/header.php'); ?>
 <body>
     
-<div class="login-page" style="border-radius:10%">
+<div class="login-page" style="border-radius:10%; background-image: linear-gradient( 226.4deg,  rgba(255,26,1,1) 28.9%, rgba(254,155,1,1) 33%, rgba(255,241,0,1) 48.6%, rgba(34,218,1,1) 65.3%, rgba(0,141,254,1) 80.6%, rgba(113,63,254,1) 100.1% );">
     <div class="text-center">
        <h1>Login Panel</h1>
        <h4>Inventory Management System</h4>
