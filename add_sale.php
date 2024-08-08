@@ -6,6 +6,7 @@ page_require_level(3);
 
 // Initialize variables
 $msg = [];
+$errors = []; // Initialize errors array for validation
 $products = [];
 
 // Handle the sale addition
@@ -44,15 +45,45 @@ $sales_query = "
 ";
 $sales_result = $db->query($sales_query);
 
+// Fetch products for the drop-down menu
+$products_query = "SELECT id, name FROM products";
+$products_result = $db->query($products_query);
+
 include_once('layouts/header.php');
 ?>
 
 <div class="row">
   <div class="col-md-6">
-    <form method="post" action="ajax.php" autocomplete="on" id="sug-form">
-        
-          <div id="result" class="list-group"></div>
+    <!-- Sale addition form -->
+    <form method="post" action="add_sale.php">
+        <div class="form-group">
+            <label for="s_id">Product:</label>
+            <select class="form-control" name="s_id" id="s_id" required>
+                <option value="">Select Product</option>
+                <?php while ($product = $products_result->fetch_assoc()): ?>
+                    <option value="<?php echo htmlspecialchars($product['id']); ?>">
+                        <?php echo htmlspecialchars($product['name']); ?>
+                    </option>
+                <?php endwhile; ?>
+            </select>
         </div>
+        <div class="form-group">
+            <label for="quantity">Quantity:</label>
+            <input type="number" class="form-control" name="quantity" id="quantity" required>
+        </div>
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="text" class="form-control" name="price" id="price" required>
+        </div>
+        <div class="form-group">
+            <label for="total">Total:</label>
+            <input type="text" class="form-control" name="total" id="total" required>
+        </div>
+        <div class="form-group">
+            <label for="date">Date:</label>
+            <input type="date" class="form-control" name="date" id="date" required>
+        </div>
+        <button type="submit" name="add_sale" class="btn btn-primary">Add Sale</button>
     </form>
   </div>
 </div>
@@ -63,35 +94,37 @@ include_once('layouts/header.php');
       <div class="panel-heading clearfix">
         <strong>
           <span class="glyphicon glyphicon-th"></span>
-          <span>Sale Edit</span>
+          <span>Sale List</span>
         </strong>
       </div>
       <div class="panel-body">
-        <form method="post" action="add_sale.php">
-          <table class="table table-bordered">
-            <thead>
-              <th> Item </th>
-              <th> Price </th>
-              <th> Qty </th>
-              <th> Total </th>
-              <th> Date</th>
-              <th> Action</th>
-            </thead>
-            <tbody id="product_info">
-              <?php while ($sale = $sales_result->fetch_assoc()): ?>
-                <tr>
-                  <td><?php echo htmlspecialchars($sale['product_name']); ?></td>
-                  <td><?php echo htmlspecialchars($sale['price']); ?></td>
-                  <td><?php echo htmlspecialchars($sale['qty']); ?></td>
-                  <td><?php echo htmlspecialchars($sale['price'] * $sale['qty']); ?></td>
-                  <td><?php echo htmlspecialchars($sale['date']); ?></td>
-                  <td><a href="edit_sale.php?id=<?php echo htmlspecialchars($sale['id']); ?>" class="btn btn-warning">Edit</a>
-                  <a href="delete_sale.php?id=<?php echo htmlspecialchars($sale['id']); ?>" class="btn btn-warning" style="background-color:grey">Delete</a></td>
-                </tr>
-              <?php endwhile; ?>
-            </tbody>
-          </table>
-        </form>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Price</th>
+              <th>Qty</th>
+              <th>Total</th>
+              <th>Date</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="product_info">
+            <?php while ($sale = $sales_result->fetch_assoc()): ?>
+              <tr>
+                <td><?php echo htmlspecialchars($sale['product_name']); ?></td>
+                <td><?php echo htmlspecialchars($sale['price']); ?></td>
+                <td><?php echo htmlspecialchars($sale['qty']); ?></td>
+                <td><?php echo htmlspecialchars($sale['price'] * $sale['qty']); ?></td>
+                <td><?php echo htmlspecialchars($sale['date']); ?></td>
+                <td>
+                    <a href="edit_sale.php?id=<?php echo htmlspecialchars($sale['id']); ?>" class="btn btn-warning">Edit</a>
+                    <a href="delete_sale.php?id=<?php echo htmlspecialchars($sale['id']); ?>" class="btn btn-warning" style="background-color:grey">Delete</a>
+                </td>
+              </tr>
+            <?php endwhile; ?>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
