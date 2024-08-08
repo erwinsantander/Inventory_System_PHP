@@ -1,21 +1,16 @@
 <?php
 require_once('includes/load.php');
-$response = ['success' => false];
 
-if (isset($_POST['id'])) {
-    $product_id = $db->escape($_POST['id']);
+if (isset($_GET['product_id'])) {
+    $product_id = $db->escape((int)$_GET['product_id']);
+    
     $query = "SELECT price FROM products WHERE id = '{$product_id}' LIMIT 1";
     $result = $db->query($query);
-
-    if ($result && $result->num_rows > 0) {
-        $product = $result->fetch_assoc();
-        $response = [
-            'success' => true,
-            'price' => $product['price']
-        ];
+    
+    if ($result && $row = $result->fetch_assoc()) {
+        echo json_encode(['price' => $row['price']]);
+    } else {
+        echo json_encode(['price' => 0]);
     }
 }
-
-header('Content-Type: application/json');
-echo json_encode($response);
 ?>
