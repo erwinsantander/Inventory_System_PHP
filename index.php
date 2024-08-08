@@ -6,7 +6,14 @@
 <?php include_once('layouts/header.php'); ?>
 <body>
     
-<div class="login-page" style="border-radius:10%; margin-top: 120px; border-block-color: unset; background-image: linear-gradient(to right, #434343 0%, black 100%);">
+<div class="login-page" style="
+    border-radius:10%; 
+    margin-top: 120px; 
+    border-block-color: unset; 
+    background-color: #fff; /* Adjust this to your preferred background color */
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.8); /* Glowing effect: adjust color and spread as needed */
+    padding: 20px; /* Add padding to ensure content doesn't touch the edges */
+">
     <div class="text-center">
        <h1>Login Panel</h1>
        <h4>Inventory Management System</h4>
@@ -18,7 +25,7 @@
         </div>
         <div class="form-group">
             <label for="Password" class="control-label">Password</label>
-            <input type="password" name= "password" class="form-control" placeholder="Password">
+            <input type="password" name="password" class="form-control" placeholder="Password">
         </div>
         <div class="form-group">
                 <button type="submit" class="btn btn-danger" style="border-radius:10%">Login</button>
