@@ -130,11 +130,6 @@ function total_profit($results) {
                 <tfoot>
                     <tr>
                         <td colspan="4"></td>
-                        <td>Total Qty</td>
-                        <td class="text-right"><?php echo number_format(total_qty($results), 0); ?></td>
-                    </tr>
-                    <tr>
-                        <td colspan="4"></td>
                         <td>Total Sales</td>
                         <td class="text-right">₱ <?php echo number_format(total_selling_price($results), 2); ?></td>
                     </tr>
