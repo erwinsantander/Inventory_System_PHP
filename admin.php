@@ -174,8 +174,7 @@
              <th>Title</th>
              <th>Total Sold</th>
              <th>Total Quantity</th>
-             <th>Quantity Deducted</th>
-           </tr>
+           <tr>
           </thead>
           <tbody>
             <?php foreach ($products_sold as $product_sold): ?>
@@ -183,7 +182,6 @@
                 <td><?php echo remove_junk(first_character($product_sold['name'])); ?></td>
                 <td><?php echo (int)$product_sold['totalSold']; ?></td>
                 <td><?php echo (int)$product_sold['totalQty']; ?></td>
-                <td><?php echo (int)$product_sold['totalQty'] - (int)$product_sold['totalSold']; ?></td>
               </tr>
             <?php endforeach; ?>
           </tbody>
@@ -207,6 +205,7 @@
                <th>Product Name</th>
                <th>Date</th>
                <th>Total Sale</th>
+               <th>Quantity Deducted</th>
              </tr>
            </thead>
            <tbody>
@@ -220,6 +219,7 @@
                </td>
                <td><?php echo remove_junk(ucfirst($recent_sale['date'])); ?></td>
                <td>₱<?php echo remove_junk(first_character($recent_sale['price'])); ?></td>
+               <td><?php echo (int)$recent_sale['quantity']; ?></td>
             </tr>
            <?php endforeach; ?>
            </tbody>
@@ -260,6 +260,7 @@
  </div>
 </div>
  </div>
+
 <?php if ($msg): ?>
 <script>
     Swal.fire({
@@ -270,4 +271,5 @@
     });
 </script>
 <?php endif; ?>
+
 <?php include_once('layouts/footer.php'); ?>
