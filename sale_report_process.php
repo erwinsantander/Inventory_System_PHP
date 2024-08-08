@@ -110,11 +110,7 @@ if (isset($_POST['submit'])) {
             <?php endforeach; ?>
             </tbody>
             <tfoot>
-            <tr>
-                <td colspan="4"></td>
-                <td>Total Qty Deducted</td>
-                <td class="text-right"><?php echo number_format($total_qty); ?></td>
-            </tr>
+            
             <tr>
                 <td colspan="4"></td>
                 <td>Grand Total Sales</td>
