@@ -131,7 +131,7 @@
       datasets: [{
         label: 'Monthly Sales',
         data: <?php echo json_encode($chartData); ?>,
-        backgroundColor: 'rgba(54, 162, 235, 0.5)',
+        backgroundColor: 'rgb(54,162,235)',
         borderColor: 'rgba(54, 162, 235, 1)',
         borderWidth: 1
       }]
