@@ -83,7 +83,7 @@
       <div class="panel-heading">
         <strong>
           <span class="glyphicon glyphicon-th"></span>
-          <span>Monthly Sales from 2021 to 2024</span>
+          <span>Monthly Sales for 2024</span>
         </strong>
       </div>
       <div class="panel-body">
@@ -96,7 +96,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
   <?php
-  $years = range(2021, 2024);
+  $year = 2024;
   $months = [
     '01' => 'Jan', '02' => 'Feb', '03' => 'Mar', '04' => 'Apr', '05' => 'May', '06' => 'Jun',
     '07' => 'Jul', '08' => 'Aug', '09' => 'Sep', '10' => 'Oct', '11' => 'Nov', '12' => 'Dec'
@@ -106,26 +106,20 @@
   $data = [];
   
   foreach ($months as $num => $name) {
-    foreach ($years as $year) {
-      $labels[] = "$name $year";
-      $data[$year][$num] = 0;
-    }
+    $labels[] = "$name $year";
+    $data[$num] = 0;
   }
   
-  foreach ($years as $year) {
-    $monthly_sales = get_monthly_sales($year);
-    while ($row = $monthly_sales->fetch_assoc()) {
-      $month = str_pad($row['month'], 2, '0', STR_PAD_LEFT);
-      $data[$year][$month] = floatval($row['total_sales']);
-    }
+  $monthly_sales = get_monthly_sales($year);
+  while ($row = $monthly_sales->fetch_assoc()) {
+    $month = str_pad($row['month'], 2, '0', STR_PAD_LEFT);
+    $data[$month] = floatval($row['total_sales']);
   }
   
   // Flatten data for chart
   $chartData = [];
-  foreach ($labels as $index => $label) {
-    list($month, $year) = explode(' ', $label);
-    $monthNum = array_search($month, $months);
-    $chartData[$index] = $data[$year][$monthNum] ?? 0;
+  foreach ($months as $num => $name) {
+    $chartData[] = $data[$num] ?? 0;
   }
   ?>
 
@@ -155,7 +149,7 @@
       plugins: {
         title: {
           display: true,
-          text: 'Monthly Sales from 2021 to 2024'
+          text: 'Monthly Sales for 2024'
         }
       }
     }
