@@ -174,7 +174,7 @@
              <th>Title</th>
              <th>Total Sold</th>
              <th>Total Quantity</th>
-           <tr>
+           </tr>
           </thead>
           <tbody>
             <?php foreach ($products_sold as $product_sold): ?>
@@ -218,7 +218,7 @@
                </a>
                </td>
                <td><?php echo remove_junk(ucfirst($recent_sale['date'])); ?></td>
-               <td>₱<?php echo remove_junk(first_character($recent_sale['price'])); ?></td>
+               <td>₱<?php echo number_format($recent_sale['price'], 2); ?></td>
                <td><?php echo (int)$recent_sale['quantity']; ?></td>
             </tr>
            <?php endforeach; ?>

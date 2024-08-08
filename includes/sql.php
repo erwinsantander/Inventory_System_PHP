@@ -293,13 +293,14 @@ function tableExists($table){
  /*--------------------------------------------------------------*/
  /* Function for Display Recent sale
  /*--------------------------------------------------------------*/
-function find_recent_sale_added($limit){
+ function find_recent_sale_added($limit) {
   global $db;
-  $sql  = "SELECT s.id,s.qty,s.price,s.date,p.name";
-  $sql .= " FROM sales s";
-  $sql .= " LEFT JOIN products p ON s.product_id = p.id";
-  $sql .= " ORDER BY s.date DESC LIMIT ".$db->escape((int)$limit);
-  return find_by_sql($sql);
+  $sql = "SELECT s.id, p.name, s.date, s.total_price AS price, s.quantity
+          FROM sales s
+          JOIN products p ON s.product_id = p.id
+          ORDER BY s.date DESC
+          LIMIT " . (int)$limit;
+  return $db->query($sql);
 }
 /*--------------------------------------------------------------*/
 /* Function for Generate sales report by two dates
