@@ -10,6 +10,10 @@
   $products_sold   = find_higest_saleing_product('10');
   $recent_products = find_recent_product_added('5');
   $recent_sales    = find_recent_sale_added('5');
+
+  // Fetch total sales and quantity sold
+  $total_sales = get_total_sales(); // Implement this function as needed
+  $total_quantity_sold = get_total_quantity_sold(); // Implement this function as needed
 ?>
 <?php include_once('layouts/header.php'); ?>
 <div class="row">
@@ -63,8 +67,9 @@
               <i class="fas fa-money-bill-alt"></i>
             </div>
             <div class="panel-value pull-right">
-              <h2 class="margin-top">&nbsp; <?php echo $c_sale['total']; ?></h2>
+              <h2 class="margin-top">&nbsp; <?php echo number_format($total_sales, 2); ?></h2>
               <p class="text-muted"> &nbsp;Sales</p>
+              <p class="text-muted"> &nbsp;Quantity Sold: <?php echo (int)$total_quantity_sold; ?></p>
             </div>
            </div>
         </div>
@@ -108,7 +113,7 @@
   }
   
   foreach ($years as $year) {
-    $monthly_sales = get_monthly_sales($year);
+    $monthly_sales = get_monthly_sales($year); // Implement this function as needed
     while ($row = $monthly_sales->fetch_assoc()) {
       $month = str_pad($row['month'], 2, '0', STR_PAD_LEFT);
       $data[$year][$month] = floatval($row['total_sales']);
