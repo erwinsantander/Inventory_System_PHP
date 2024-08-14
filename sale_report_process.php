@@ -101,9 +101,15 @@ function total_profit($results) {
     <?php if($results): ?>
         <div class="page-break">
             <div class="sale-head">
-                <h1>Inventory Management System - Sales Report</h1>
-                <strong><?php echo isset($start_date) ? $start_date : ''; ?> TO <?php echo isset($end_date) ? $end_date : ''; ?></strong>
+                <!-- Logo Section -->
+                <img src="libs/images/icon.png" alt="ANC Mini Mart Logo" style="width:100px; height:auto; display:block; margin: 0 auto;">
+                <h1>ANC Mini Mart - Sales Report</h1>
+                <p>Kabangbang, Bantayan, Cebu</p>
+                <p>Contact no: Smart: 09086062594 Sun: 09228947029 Globe: (0945)7657140</p>
+                <p>Email: ancminimartbantayan@yahoo.com</p>
+                <strong><?php echo isset($start_date) ? $start_date : ''; ?> to <?php echo isset($end_date) ? $end_date : ''; ?></strong>
             </div>
+
             <table>
                 <thead>
                     <tr>
