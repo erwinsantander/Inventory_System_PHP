@@ -19,7 +19,7 @@
    </div>
 </div>
   <div class="row">
-    <a href="users.php" style="color:black;">
+    <a href="users.php" style="color:purple;">
 		<div class="col-md-3">
        <div class="panel  clearfix">
          <div class="panel-icon pull-left bg-secondary1">
@@ -27,12 +27,12 @@
         </div>
         <div class="panel-value pull-right">
           <h2 class="margin-top">&nbsp; <?php  echo $c_user['total']; ?> </h2>
-          <p class="text-muted"> &nbsp;Users</p>
+          <p class="text-muted" style="color:purple;"> &nbsp;Users</p>
         </div>
        </div>
     </div>
 	</a>
-	<a href="categorie.php" style="color:black;">
+	<a href="categorie.php" style="color:orange;">
     <div class="col-md-3">
        <div class="panel  clearfix">
          <div class="panel-icon pull-left bg-red">
@@ -40,13 +40,13 @@
         </div>
         <div class="panel-value pull-right">
           <h2 class="margin-top">&nbsp; <?php  echo $c_categorie['total']; ?> </h2>
-          <p class="text-muted"> &nbsp;Categories</p>
+          <p class="text-muted" style="color:orange;"> &nbsp;Categories</p>
         </div>
        </div>
     </div>
 	</a>
 	
-	<a href="product.php" style="color:black;">
+	<a href="product.php" style="color:sky blue;">
     <div class="col-md-3">
        <div class="panel  clearfix">
          <div class="panel-icon pull-left bg-blue2">
@@ -54,13 +54,13 @@
         </div>
         <div class="panel-value pull-right">
           <h2 class="margin-top">&nbsp; <?php  echo $c_product['total']; ?> </h2>
-          <p class="text-muted"> &nbsp;Products</p>
+          <p class="text-muted" style="color:blue;"> &nbsp;Products</p>
         </div>
        </div>
     </div>
 	</a>
   
-	<a href="sales.php" style="color:black;">
+	<a href="sales.php" style="color:green;">
     <div class="col-md-3">
        <div class="panel clearfix">
          <div class="panel-icon pull-left bg-green">
@@ -68,7 +68,7 @@
         </div>
         <div class="panel-value pull-right">
           <h2 class="margin-top">&nbsp; <?php echo $c_sale['total']; ?></h2>
-          <p class="text-muted"> &nbsp;Sales</p>
+          <p class="text-muted" style="color:green;"> &nbsp;Sales</p>
         </div>
        </div>
     </div>

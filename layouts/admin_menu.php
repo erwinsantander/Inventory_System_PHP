@@ -28,14 +28,7 @@
     </a>
     <ul class="nav submenu">
        <li><a href="product.php">Manage Products</a> </li>
-       <li><a href="add_product.php">Add Products</a> </li>
    </ul>
-  </li>
-  <li>
-    <a href="media.php" >
-      <i class="glyphicon glyphicon-picture"></i>
-      <span>Media Files</span>
-    </a>
   </li>
   <li>
     <a href="#" class="submenu-toggle">
